@@ -11,3 +11,48 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
+
+alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
+alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
+alias goTrivit='cd ~/Dropbox/app/trivit'
+alias gotrivit='cd ~/Dropbox/app/trivit'
+alias goBalloonIncWeb='cd ~/Dropbox/app/balloonincweb'
+alias goballoonincweb='cd ~/Dropbox/app/balloonincweb'
+alias goWinkln='cd ~/Dropbox/app/Winkln.be/winkln.be-ios'
+alias gowinkln='cd ~/Dropbox/app/Winkln.be/winkln.be-ios'
+
+alias goT='cd ~/Dropbox/app/trivit'
+alias goW='cd ~/Dropbox/app/Winkln.be/winkln.be-ios'
+
+# Lifx aliases
+alias loff='lifx light power off'
+alias lon='lifx light power on'
+alias l20='lifx light color -B 13107'
+alias l40='lifx light color -B 26214'
+alias l60='lifx light color -B 39321'
+alias l80='lifx light color -B 52428'
+alias l100='lifx light color -B 65535'
+
+function lazygit() {
+    git add .
+    git commit -a -m "$1"
+    git push
+}
+
+
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+# some more ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
