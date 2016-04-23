@@ -60,9 +60,9 @@ alias rm="${aliases[rm]:-rm} -i"
 alias type='type -a'
 
 # ls
-if is-callable 'dircolors'; then
+if is-callable 'gdircolors'; then
   # GNU Core Utilities
-  alias ls='ls --group-directories-first'
+  alias ls='gls --group-directories-first'
 
   if zstyle -t ':prezto:module:utility:ls' color; then
     if [[ -s "$HOME/.dir_colors" ]]; then
