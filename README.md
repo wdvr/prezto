@@ -1,3 +1,5 @@
+! This is a fork of the original project !
+
 Prezto — Instantly Awesome Zsh
 ==============================
 
