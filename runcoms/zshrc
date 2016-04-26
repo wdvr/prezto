@@ -39,3 +39,7 @@ function lazygit() {
     git push
 }
 
+# filtered top, pass process name as parameter
+topd(){
+    top -p `pgrep $1 | tr "\\n" "," | sed 's/,$//'`
+}
