@@ -43,3 +43,6 @@ function lazygit() {
 topd(){
     top -p `pgrep $1 | tr "\\n" "," | sed 's/,$//'`
 }
+
+# shortcut to update prezto from github
+alias prezup='(cd ~/.zprezto && git pull && git submodule update --init --recursive)'
