@@ -12,6 +12,25 @@ fi
 
 # Customize to your needs...
 
+#Sonar qube path variables
+export SONAR_RUNNER_HOME=/usr/local/Cellar/sonar-runner/2.5/libexec
+export SONARQUBE_HOME=/Users/wouter/sonarqube-5.4
+
+OCLINT_HOME=~/oclint-0.10.2/
+export PATH=$OCLINT_HOME/bin:$PATH
+
+
+export PATH=$SONAR_RUNNER_HOME:$PATH
+export PATH=$SONARQUBE_HOME:$PATH
+export PATH=$PATH:/Users/wouter/sonar-swift/src/main/shell
+export PATH=$PATH:/Users/wouter/sonar-objective-c/src/main/shell
+# no interpret wildcards
+unsetopt nomatch
+
+
+# aliases
+alias '$'=''
+
 alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
 alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
 alias goTrivit='cd ~/Dropbox/app/trivit'
@@ -41,8 +60,24 @@ function lazygit() {
 
 # filtered top, pass process name as parameter
 topd(){
-    top -p `pgrep $1 | tr "\\n" "," | sed 's/,$//'`
+    top -pid `pgrep $1 | tr "\\n" "," | sed 's/,$//'`
 }
 
 # shortcut to update prezto from github
 alias prezup='(cd ~/.zprezto && git pull && git submodule update --init --recursive)'
+
+
+function sonarserver5(){
+	~/sonarqube-5.4/bin/macosx-universal-64/sonar.sh console
+}
+
+function sonarserver4(){
+	~/sonarqube-4.5.7/bin/macosx-universal-64/sonar.sh console
+}
+
+function jenkins(){
+	rm -f /tmp/jenkins.log
+	nohup java -jar ~/jenkins/jenkins.war --httpPort=8081 > /tmp/jenkins.log 2>&1 &
+}
+
+alias sonarserver=sonarserver5
